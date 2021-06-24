@@ -1,0 +1,7 @@
+{
+  "name": "action-get-tag",
+  "main": "index.js",
+  "dependencies": {
+    "@actions/core": "^1.1.1"
+  }
+}

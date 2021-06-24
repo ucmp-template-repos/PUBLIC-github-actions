@@ -1,0 +1,11 @@
+name: Get tag
+description: Get tag from GITHUB_REF environment variable
+branding:
+  icon: tag
+  color: gray-dark
+outputs:
+  tag:
+    description: Git tag name
+runs:
+  using: node12
+  main: main.js
