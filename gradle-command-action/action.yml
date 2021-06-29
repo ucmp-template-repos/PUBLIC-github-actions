@@ -1,0 +1,57 @@
+name: "Gradle Command"
+description: 'Execute Gradle Command Line'
+author: 'Paul Merlin <paul@nospere.org>'
+
+# https://help.github.com/en/articles/metadata-syntax-for-github-actions
+
+inputs:
+  wrapper-directory:
+    description: Path to the Gradle Wrapper directory
+    required: false
+  gradle-executable:
+    description: Path to the Gradle executable
+    required: false
+  gradle-version:
+    description: Gradle version to use
+    required: false
+  build-root-directory:
+    description: Path to the root directory of the build
+    required: false
+  arguments:
+    description: Gradle command line arguments, see gradle --help
+    required: false
+  wrapper-cache-enabled:
+    description: Whether caching wrapper installation is enabled or not, default to 'true'
+    required: false
+  dependencies-cache-enabled:
+    description: Whether caching dependencies is enabled or not, default to 'false'
+    required: false
+  dependencies-cache-key:
+    description: Globs of files to hash in the build root directory, separated by new lines, use best-effort if unset
+    required: false
+  dependencies-cache-exact:
+    description: Whether to restore only if exact match, default to 'false'
+    required: false
+  configuration-cache-enabled:
+    description: Whether caching build configuration is enabled or not, default to 'false'
+    required: false
+  configuration-cache-key:
+    description: Globs of files to hash in the build root directory, separated by new lines, use best-effort if unset
+    required: false
+  configuration-cache-exact:
+    description: Whether to restore only if exact match, default to 'false'
+    required: false
+
+outputs:
+  build-scan-url:
+    description: Link to the build scan if any
+
+runs:
+  using: 'node12'
+  main: 'dist/main/index.js'
+  post: 'dist/post/index.js'
+  post-if: success()
+
+branding:
+  icon: 'box'
+  color: 'gray-dark'
