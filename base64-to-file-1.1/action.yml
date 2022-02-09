@@ -1,0 +1,22 @@
+name: 'base64-to-file'
+description: 'Takes a base64-encoded string and writes to a file.'
+branding:
+  color: 'blue'
+  icon: 'file'
+inputs:
+  fileName:
+    description: 'Name of the file when written to temp location'
+    required: true
+    default: 'decoded-file.file'
+  fileDir:
+    description: 'If it is set, change the output location to specific one from temp location.'
+    required: false
+  encodedString:
+    description: 'The base64 encoded string'
+    required: true
+outputs:
+  filePath:
+    description: 'The temp file location'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
