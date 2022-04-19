@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+      branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        python-version: [3.10.4]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Unit test with coverage
+      run: echo Tested!!
+
+    - name: Test result notify
+      uses: ./
+      env:
+        JUNIT_TEST_RESULTS: test_build/test-results/test
+        JACOCO_REPORTS: test_build/reports/jacoco/test/jacocoTestReport.xml
+        SLACK_URL: ${{ secrets.SLACK_URL }}
+
