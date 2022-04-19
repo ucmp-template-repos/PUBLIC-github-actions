@@ -1,0 +1,11 @@
+name: 'JUnit Slack Reporter with Coverage'
+description: 'Reports results of tests in JUnit to Slack channel.'
+author: neochae
+inputs: {}
+outputs: {}
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'mic'
+  color: 'purple'
