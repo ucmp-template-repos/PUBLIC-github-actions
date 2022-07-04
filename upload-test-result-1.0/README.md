@@ -17,6 +17,7 @@ This action will:
 | JUNIT_TEST_RESULTS  | build/test-results/test                        | Path (relative to workspce directory) to JUnit report         | Y |
 | JACOCO_REPORTS  | build/reports/jacoco/test/jacocoTestReport.xml | File Path (relative to workspce directory) to Coverage report | Y*         |
 | SLACK_URL  | https://hooks.slack.com/services/XXXXXXXXXXXXX | Slack Incomming Webhook URL                                   | Y          |
+| SOURCE_BRANCH  | master/dev/feature/xxx                         | Git branch                                                    | Y*          |
 
 ## Sample Workflow section
 ```
@@ -26,6 +27,7 @@ This action will:
         JUNIT_TEST_RESULTS: build/test-results/test
         JACOCO_REPORTS: build/reports/jacoco/test/jacocoTestReport.xml
         SLACK_URL: ${{ secrets.SLACK_URL }}
+        SOURCE_BRANCH: ${{ github.ref_name }}
 ```
 
 # Slack message example

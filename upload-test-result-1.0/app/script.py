@@ -17,7 +17,7 @@ def main():
 
     # Notify to Slack
     if len(junit_report.keys()) > 0:
-        junit_msg = get_slack_junit_message(REPORT_TITLE, junit_report)
+        junit_msg = get_slack_junit_message(REPORT_TITLE, SOURCE_BRANCH, junit_report)
         send_message(SLACK_URL, junit_msg)
 
     if len(jacoco_report.keys()) > 0:
