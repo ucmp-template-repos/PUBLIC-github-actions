@@ -106,7 +106,7 @@ def get_junit_result(xml_file):
     return tree
 
 
-def get_slack_junit_message(title, branch, reports):
+def get_slack_junit_message(title, repository, branch, reports):
     template_rule = dict()
     template_rule['failures'] = 'TEMPLATE_FAILED'
     template_rule['tests'] = 'TEMPLATE_TESTED'
@@ -114,8 +114,10 @@ def get_slack_junit_message(title, branch, reports):
     template_rule['time'] = 'TEMPLATE_TIME'
 
     merge_title = title
+    if len(repository) > 0:
+        merge_title = "{} - {}".format(title, repository)
     if len(branch) > 0:
-        merge_title = "{} - ({})".format(title, branch)
+        merge_title = "{} - ({})".format(merge_title, branch)
     slack_message = template_junit_msg
     slack_message = slack_message.replace('TEMPLATE_TITLE', merge_title)
     if reports['failures'] != '0':

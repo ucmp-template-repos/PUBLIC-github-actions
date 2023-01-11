@@ -18,6 +18,7 @@ This action will:
 | JACOCO_REPORTS  | build/reports/jacoco/test/jacocoTestReport.xml | File Path (relative to workspce directory) to Coverage report | Y*         |
 | SLACK_URL  | https://hooks.slack.com/services/XXXXXXXXXXXXX | Slack Incomming Webhook URL                                   | Y          |
 | SOURCE_BRANCH  | master/dev/feature/xxx                         | Git branch                                                    | Y*          |
+| REPOSITORY_NAME  | other-user/repo-name                         | Git branch name                                               | Y*          |
 
 ## Sample Workflow section
 ```
@@ -28,6 +29,7 @@ This action will:
         JACOCO_REPORTS: build/reports/jacoco/test/jacocoTestReport.xml
         SLACK_URL: ${{ secrets.SLACK_URL }}
         SOURCE_BRANCH: ${{ github.ref_name }}
+        REPOSITORY_NAME: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
 ```
 
 # Slack message example
