@@ -10,4 +10,3 @@
 | gradle-command-action (v1.3.3) | <https://github.com/eskatos/gradle-command-action> | 2021-06-29 | 김동민 | - |
 | upload-test-result-1.0 | <https://github.com/neochae1/upload-test-result> | 2022-04-19 | 채향석 | - |
 
-
